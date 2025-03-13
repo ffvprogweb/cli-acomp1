@@ -1,29 +1,36 @@
 import React, { useState } from "react";
 import "./ClienteCadastrarStyles.css";
+
 function ClienteCadastrarView() {
   const [cpf, setCpf] = useState("");
   const [nome, setNome] = useState("");
   const [cep, setCep] = useState("");
   const [email, setEmail] = useState("");
-  const handleConfirm = () => {
+
+  const handleConfirm = (e) => {
+    e.preventDefault(); // Evita o comportamento padrão do formulário
+
     const clienteData = {
       cpf,
       nome,
       cep,
       email,
     };
+
     console.log(JSON.stringify(clienteData, null, 2));
   };
+
   return (
     <div className="cliente-cadastrar-view">
       <h1 className="title">Cadastrar Cliente</h1>
-      <form>
+      <form onSubmit={handleConfirm}>
         <div>
           <label htmlFor="cpf">CPF:</label>
           <input
             data-testid="cpf"
             type="text"
             value={cpf}
+            required
             onChange={(e) => setCpf(e.target.value)}
           />
         </div>
@@ -34,6 +41,7 @@ function ClienteCadastrarView() {
             type="text"
             value={nome}
             onChange={(e) => setNome(e.target.value)}
+            required
           />
         </div>
         <div>
@@ -43,6 +51,7 @@ function ClienteCadastrarView() {
             type="text"
             value={cep}
             onChange={(e) => setCep(e.target.value)}
+            required
           />
         </div>
         <div>
@@ -52,13 +61,15 @@ function ClienteCadastrarView() {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
         </div>
-        <button type="button" className="button" onClick={handleConfirm}>
+        <button type="submit" className="button">
           Confirmar
         </button>
       </form>
     </div>
   );
 }
+
 export default ClienteCadastrarView;
