@@ -68,7 +68,7 @@ function ClienteCadastrarView({ onCancelar }) {
               Confirmar
             </button>
             <button type="button" className="button" onClick={onCancelar}>
-              Cancelar
+              Cancelar ok
             </button>
           </div>
         </div>
