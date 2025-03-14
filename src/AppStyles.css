@@ -2,10 +2,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* Remova o justify-content: center; para alinhar ao topo */
   min-height: 100vh;
   background-color: #f0f0f0;
-  padding-top: 120px; /* Adicione um espaçamento no topo */
+  padding-top: 20px;
 }
 
 h1 {
@@ -28,4 +27,13 @@ button {
 
 button:hover {
   background-color: #0056b3;
+}
+.cliente-cadastrar-view .button-container {
+  display: flex;
+  justify-content: flex-start; /* Alinha os botões à esquerda */
+  margin-top: 10px; /* Adiciona um espaçamento acima dos botões */
+}
+
+.cliente-cadastrar-view .button-container button {
+  margin-right: 10px; /* Adiciona um espaçamento entre os botões */
 }

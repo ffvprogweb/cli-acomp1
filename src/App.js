@@ -1,13 +1,12 @@
 
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { useState } from "react";
 import ClienteCadastrarView from "./componentes/cliente_cadastrar/ClienteCadastrarView";
 import ClienteConsultaView from "./componentes/cliente_consulta/ClienteConsultaView";
-import Menu from "./componentes/menu/Menu";
+import "./AppStyles.css";
 
 function App() {
-  const clientes = [
-    // Adicione alguns dados de exemplo para testar
+  const [paginaAtual, setPaginaAtual] = useState(null);
+  const [clientes, setClientes] = useState([
     {
       id: 1,
       cpf: "123.456.789-00",
@@ -17,20 +16,43 @@ function App() {
       email: "joao@example.com",
       dataCadastro: "2023-01-01",
     },
-    // Adicione mais clientes conforme necessário
-  ];
+  ]);
+
+  const adicionarCliente = (novoCliente) => {
+    setClientes([...clientes, novoCliente]);
+  };
+
+  const voltarParaHome = () => {
+    setPaginaAtual(null);
+  };
+
+  const renderizarPagina = () => {
+    switch (paginaAtual) {
+      case "cadastrar":
+        return (
+          <ClienteCadastrarView
+            adicionarCliente={adicionarCliente}
+            onCancelar={voltarParaHome}
+          />
+        );
+      case "consultar":
+        return <ClienteConsultaView clientes={clientes} onCancelar={voltarParaHome} />;
+      default:
+        return (
+          <div>
+            <button onClick={() => setPaginaAtual("cadastrar")}>Cadastrar</button>
+            <button onClick={() => setPaginaAtual("consultar")}>Consultar</button>
+          </div>
+        );
+    }
+  };
 
   return (
-    <Router>
-      <Menu />
-      <Routes>
-        <Route path="/cadastrar" element={<ClienteCadastrarView />} />
-        <Route
-          path="/consultar"
-          element={<ClienteConsultaView clientes={clientes} />}
-        />
-      </Routes>
-    </Router>
+    <div className="container">
+      <h1>Gestão de Clientes</h1>
+      {renderizarPagina()}
+    </div>
   );
 }
+
 export default App;

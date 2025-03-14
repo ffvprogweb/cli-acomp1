@@ -1,25 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import "./MenuStyles.css"; // Importa o arquivo de estilos
-function Menu() {
+
+function Menu({ mudarPagina }) {
   return (
-    <div className="menu-container">
-      <h3>Gerenciamento de Clientes</h3>
-      <nav>
-        <ul>
-          <li>
-            <Link data-testid="cadastrar" to="/cadastrar">
-              Cadastrar Cliente
-            </Link>
-          </li>
-          <li>
-            <Link data-testid="consultar" to="/consultar">
-              Consultar Clientes
-            </Link>
-          </li>
-        </ul>
-      </nav>
-    </div>
+    <nav>
+      <ul>
+        <li>
+          <button onClick={() => mudarPagina("cadastrar")}>Cadastrar Cliente</button>
+        </li>
+        <li>
+          <button onClick={() => mudarPagina("consultar")}>Consultar Clientes</button>
+        </li>
+      </ul>
+    </nav>
   );
 }
+
 export default Menu;

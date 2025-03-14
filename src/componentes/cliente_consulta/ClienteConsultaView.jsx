@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./ClienteConsultaStyles.css";
 
-function ClienteConsultaView({ clientes }) {
+function ClienteConsultaView({ clientes, onCancelar }) {
   return (
     <div className="cliente-view">
       <h5>Lista de Clientes</h5>
@@ -36,6 +36,9 @@ function ClienteConsultaView({ clientes }) {
       ) : (
         <p>Nenhum cliente encontrado.</p>
       )}
+      <button type="button" className="button" onClick={onCancelar}>
+        Cancelar
+      </button>
     </div>
   );
 }
@@ -52,6 +55,7 @@ ClienteConsultaView.propTypes = {
       dataCadastro: PropTypes.string.isRequired,
     })
   ).isRequired,
+  onCancelar: PropTypes.func.isRequired, // Adicione a prop onCancelar
 };
 
 export default ClienteConsultaView;

@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import "./ClienteCadastrarStyles.css";
 
-function ClienteCadastrarView() {
+function ClienteCadastrarView({ onCancelar }) {
   const [cpf, setCpf] = useState("");
   const [nome, setNome] = useState("");
   const [cep, setCep] = useState("");
   const [email, setEmail] = useState("");
 
   const handleConfirm = (e) => {
-    e.preventDefault(); // Evita o comportamento padrão do formulário
+    e.preventDefault();
 
     const clienteData = {
       cpf,
@@ -63,10 +63,15 @@ function ClienteCadastrarView() {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
+          <div className="button-container">
+            <button type="submit" className="button">
+              Confirmar
+            </button>
+            <button type="button" className="button" onClick={onCancelar}>
+              Cancelar
+            </button>
+          </div>
         </div>
-        <button type="submit" className="button">
-          Confirmar
-        </button>
       </form>
     </div>
   );
