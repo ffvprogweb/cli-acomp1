@@ -37,7 +37,7 @@ function ClienteConsultaView({ clientes, onCancelar }) {
         <p>Nenhum cliente encontrado.</p>
       )}
       <button type="button" className="button" onClick={onCancelar}>
-        Cancelar
+        Voltar
       </button>
     </div>
   );
