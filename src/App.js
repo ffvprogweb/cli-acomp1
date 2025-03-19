@@ -39,9 +39,12 @@ function App() {
         return <ClienteConsultaView clientes={clientes} onCancelar={voltarParaHome} />;
       default:
         return (
-          <div>
+          <div className="info-box">
             <button onClick={() => setPaginaAtual("cadastrar")}>Cadastrar</button>
             <button onClick={() => setPaginaAtual("consultar")}>Consultar</button>
+            <button onClick={() => setPaginaAtual("alterar")}>Alterar</button>
+            <button onClick={() => setPaginaAtual("excluir")}>Excluir</button>
+            
           </div>
         );
     }
@@ -49,7 +52,7 @@ function App() {
 
   return (
     <div className="container">
-      <h1>Gestão de Clientes</h1>
+      <h3>Gestão de Clientes</h3>
       {renderizarPagina()}
     </div>
   );
